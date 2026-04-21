@@ -33,7 +33,7 @@ La interfaz debe comunicar estéticamente todo lo que sucede.
 *   **Inspiración "Liquid Glass":** Las animaciones deben ser hermosas, fluidas y evocar el *liquid glass* de Apple. 
 *   No hay rebotes toscos. Usa transiciones de opacidad y transformaciones suaves apoyadas en curvas como `cubic-bezier(0.25, 0.46, 0.45, 0.94)`.
 
-## 6. Arquitectura Frontend Inquebrantable
+## 7. Arquitectura Frontend Inquebrantable
 1.  **Cero Tailwind CSS (Por Defecto):** Usamos **Vanilla CSS** con CSS Custom Properties (Variables).
 2.  **Arquitectura "Dumb":** Componentes React "tontos" acoplados a su archivo CSS homónimo (ej: `Card.tsx` + `card.css`).
 3.  **Tarjetas Premium:** Bordes ultra sutiles (1px `#E5E5E5`), fondo blanco puro, y sombras casi imperceptibles en reposo que se elevan al hover.
