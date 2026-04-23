@@ -63,6 +63,25 @@ Si borras o rompes algo por error:
 - **Documentación de Resultados:** Todo resultado de test ejecutado **DEBE** quedar documentado en `docs/qa_reports/`. No se acepta un test "que pasó" sin evidencia escrita.
 - **Manual de Despliegue:** Para cada app nueva o servicio, se debe crear un manual de despliegue específico (`DEPLOYMENT.md`) para documentar el paso a paso.
 
+### Regla crítica de Deploy en Coolify (obligatoria)
+- No confundir **restart** con **deploy**:
+  - `restart` no garantiza pull/build de código nuevo.
+  - el despliegue válido es `POST /api/v1/deploy?uuid=<APP_UUID>`.
+- Después de encolar deploy, el agente **debe** hacer polling al `deployment_uuid` hasta `finished|failed|canceled`.
+- Un pipeline no se considera exitoso si solo encoló deploy; debe validar resultado final.
+- Siempre verificar evidencia final:
+  1. deployment status final en API,
+  2. contenedor activo con tag del SHA esperado,
+  3. healthcheck 200 en URL pública.
+
+### Migraciones de repositorio (casabero → casabero-labs)
+- Se prohíben migraciones masivas de fuente Git sin validación por app.
+- Estrategia obligatoria:
+  1. una app por vez,
+  2. ventana controlada,
+  3. rollback definido antes de cambiar,
+  4. evidencia de deploy exitoso antes de pasar a la siguiente app.
+
 ## 7. Documentación Absoluta (Carpeta `docs/`)
 El agente tiene la **obligación estricta** de crear y mantener una carpeta `docs/` en la raíz del proyecto donde documentará absolutamente todo. No puede haber código en producción sin su respectiva documentación.
 **Estructura Base Obligatoria:**
