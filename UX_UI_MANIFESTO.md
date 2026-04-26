@@ -38,3 +38,33 @@ La interfaz debe comunicar estéticamente todo lo que sucede.
 2.  **Arquitectura "Dumb":** Componentes React "tontos" acoplados a su archivo CSS homónimo (ej: `Card.tsx` + `card.css`).
 3.  **Tarjetas Premium:** Bordes ultra sutiles (1px `#E5E5E5`), fondo blanco puro, y sombras casi imperceptibles en reposo que se elevan al hover.
 4.  **Tipografías Semánticas:** Armonía absoluta. Outfit (Títulos), Inter (Cuerpo), Fira Code (Montos numéricos, SKUs). El agente puede sugerir otras si el proyecto lo demanda, pero la armonía es ley.
+
+## 8. Botones y Elementos Interactivos
+
+### Light Mode
+- **Fondo del botón:** `#EEF2F7`
+- **Borde del botón:** `#D5DEE8`
+- **Texto del botón:** `#1A202C`
+
+### Dark Mode
+- **Fondo del botón:** `#1E2533`
+- **Borde del botón:** `#2D3748`
+- **Texto del botón:** `#E2E8F0`
+
+### Comportamiento
+- **Hover Light:** Fondo `#E2E8F0`, borde `#CBD5E1`
+- **Hover Dark:** Fondo `#2D3748`, borde `#4A5568`
+- **Active/Pressed:** Opacidad 0.85
+- **Disabled:** Opacidad 0.5, sin hover effect
+- **Border radius:** `8px` por defecto
+- **Padding vertical:** `10px 16px` (estándar), `14px 24px` (botones grandes)
+
+### Botones Primarios (Brand / Acción Principal)
+- **Light:** Fondo `#1A202C`, texto `#FFFFFF`, borde `#1A202C`
+- **Dark:** Fondo `#E2E8F0`, texto `#1A202C`, borde `#E2E8F0`
+
+### Botones de Peligro (Destructive / Eliminar)
+- **Light:** Fondo `#FEF2F2`, borde `#FECACA`, texto `#991B1B`
+- **Dark:** Fondo `#2D1B1B`, borde `#4A2222`, texto `#FCA5A5`
+
+[* Espacio para más elementos según crezca el manifiesto *]
