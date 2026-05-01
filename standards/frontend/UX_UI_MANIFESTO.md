@@ -124,31 +124,46 @@ Todas las animaciones deben cumplir estos criterios:
 
 ## 8. Botones y Elementos Interactivos
 
-### Light Mode
-- **Fondo del botón:** `#EEF2F7`
-- **Borde del botón:** `#D5DEE8`
-- **Texto del botón:** `#1A202C`
+**Principio rector:** La jerarquía y los estados de los botones se comunican mediante **posición, tamaño y animación**, nunca mediante colores semánticos. Esto garantiza una experiencia idéntica para usuarios con daltonismo o visión reducida.
 
-### Dark Mode
-- **Fondo del botón:** `#1E2533`
-- **Borde del botón:** `#2D3748`
-- **Texto del botón:** `#E2E8F0`
+### Estilo Unificado (base estructural, no semántica)
 
-### Comportamiento
-- **Hover Light:** Fondo `#E2E8F0`, borde `#CBD5E1`
-- **Hover Dark:** Fondo `#2D3748`, borde `#4A5568`
-- **Active/Pressed:** Opacidad 0.85
-- **Disabled:** Opacidad 0.5, sin hover effect
-- **Border radius:** `8px` por defecto
-- **Padding vertical:** `10px 16px` (estándar), `14px 24px` (botones grandes)
+| Propiedad | Light Mode | Dark Mode |
+|---|---|---|
+| Fondo | `#EEF2F7` | `#1E2533` |
+| Borde | `#D5DEE8` | `#2D3748` |
+| Texto | `#1A202C` | `#E2E8F0` |
+| Border radius | `8px` | `8px` |
+| Padding estándar | `10px 16px` | `10px 16px` |
+| Padding grande | `14px 24px` | `14px 24px` |
 
-### Botones Primarios (Brand / Acción Principal)
-- **Light:** Fondo `#1A202C`, texto `#FFFFFF`, borde `#1A202C`
-- **Dark:** Fondo `#E2E8F0`, texto `#1A202C`, borde `#E2E8F0`
+### Jerarquía Visual sin Color
 
-### Botones de Peligro (Destructive / Eliminar)
-- **Light:** Fondo `#FEF2F2`, borde `#FECACA`, texto `#991B1B`
-- **Dark:** Fondo `#2D1B1B`, borde `#4A2222`, texto `#FCA5A5`
+La importancia de un botón se comunica exclusivamente por:
+
+1. **Posición:** El botón de acción principal va primero (izquierda en LTR, derecha en diálogos).
+2. **Tamaño:** Un botón grande (`14px 24px`) indica mayor relevancia que uno estándar.
+3. **Peso tipográfico:** `font-weight: 600` en la acción principal, `400` en secundarias.
+4. **Único o múltiple:** Si hay un solo botón, ocupa ancho completo; si hay varios, se agrupan.
+
+### Animaciones de Estado (sin color semántico)
+
+| Estado | Animación | Duración |
+|---|---|---|
+| **Hover (escritorio)** | Fondo se aclara sutilmente (`#E2E8F0` light / `#2D3748` dark) + borde `#CBD5E1` light / `#4A5568` dark — feedback estructural, no semántico | 200ms ease-out |
+| **Pressed (toque/click)** | Escala al 95% + liberación con spring suave | 150ms |
+| **Carga en progreso** | El texto se reemplaza por "…" con animación de elipsis pulsante. El botón permanece interactivo visualmente pero bloquea doble submit. | Loop hasta completar |
+| **Acción completada** | Pulso suave (gentle scale + fade, ver §7) seguido del texto de confirmación por 2s | 600ms |
+| **Acción destructiva** | Sacudida sutil (2-3 vibraciones horizontales, ver §7) al primer toque → aparece confirmación ("¿Eliminar?" / "Cancelar"). Sin color rojo. | 400ms sacudida |
+| **Disabled** | Opacidad reducida al 40% + `cursor: not-allowed`. Sin hover effect. | Inmediato |
+| **Focus (teclado)** | Outline sutil de 2px con el color de acento de la paleta (§3). Único uso de color permitido, por accesibilidad. | Inmediato |
+
+### Reglas de Implementación
+
+- **Un solo componente `Button`** para toda la app. No crear variantes `PrimaryButton`, `DangerButton`, etc.
+- Las diferencias de comportamiento se pasan por props (`variant: "default" | "destructive"`), pero el estilo visual base **es el mismo** — solo cambia la animación al interactuar.
+- El mensaje de confirmación para acciones destructivas se muestra **dentro del mismo botón** o en un texto adyacente, nunca en un modal separado a menos que la acción sea irreversible y masiva.
+- Todos los estados se prueban con filtros de daltonismo (protanopia, deuteranopia, tritanopia) usando DevTools.
 
 ---
 

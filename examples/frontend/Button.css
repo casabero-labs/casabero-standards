@@ -1,0 +1,176 @@
+/* ─── Botón Unificado (UX_UI_MANIFESTO.md §8) ─── */
+/* Un solo estilo de botón. Jerarquía por animación, no por color. */
+/* Accesible: testado con filtros de daltonismo. */
+
+.button-wrapper {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+}
+
+/* ─── Base (estilo unificado, colores estructurales) ─── */
+
+.button {
+  --btn-bg: #eef2f7;
+  --btn-border: #d5dee8;
+  --btn-text: #1a202c;
+  --btn-radius: 8px;
+  --btn-transition: 0.2s ease-out;
+
+  font-family: "Inter", sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  line-height: 1.4;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: 1px solid var(--btn-border);
+  border-radius: var(--btn-radius);
+  cursor: pointer;
+  outline: none;
+  transition: background var(--btn-transition),
+              opacity var(--btn-transition),
+              transform 0.15s ease-out;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.button--standard {
+  padding: 10px 16px;
+  font-size: 0.9375rem;
+}
+
+.button--large {
+  padding: 14px 24px;
+  font-size: 1rem;
+  font-weight: 600; /* Jerarquía por peso, no por color */
+}
+
+.button__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ─── Hover ─── */
+
+.button:hover:not(.button--disabled) {
+  --btn-bg: #e2e8f0;
+  --btn-border: #cbd5e1;
+}
+
+/* ─── Pressed ─── */
+
+.button:active:not(.button--disabled) {
+  transform: scale(0.95);
+}
+
+/* ─── Focus (teclado) — único uso de color, por accesibilidad ─── */
+
+.button:focus-visible {
+  outline: 2px solid var(--btn-focus, #93c5fd);
+  outline-offset: 2px;
+}
+
+/* ─── Estados por animación ─── */
+
+/* Shake: acción destructiva primer toque */
+.button--shaking {
+  animation: btn-shake 0.4s ease;
+}
+
+@keyframes btn-shake {
+  0%, 100% { transform: translateX(0); }
+  15%      { transform: translateX(-5px); }
+  30%      { transform: translateX(5px); }
+  45%      { transform: translateX(-4px); }
+  60%      { transform: translateX(4px); }
+  75%      { transform: translateX(-2px); }
+  90%      { transform: translateX(2px); }
+}
+
+/* Success: pulso suave */
+.button--success {
+  animation: btn-pulse 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes btn-pulse {
+  0%   { transform: scale(1);   opacity: 1; }
+  40%  { transform: scale(1.05); opacity: 0.85; }
+  100% { transform: scale(1);   opacity: 1; }
+}
+
+/* Disabled */
+.button--disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.button--disabled:hover {
+  --btn-bg: #eef2f7;
+  --btn-border: #d5dee8;
+}
+
+/* Botón de cancelar (confirmación destructiva) */
+.button--cancel {
+  --btn-bg: transparent;
+  --btn-border: transparent;
+  --btn-text: #6b7280;
+}
+
+.button--cancel:hover {
+  --btn-bg: #f3f4f6;
+  --btn-border: #e5e5e5;
+}
+
+/* ─── Elipsis de carga ─── */
+
+.button__ellipsis::after {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  background: currentColor;
+  border-radius: 50%;
+  margin-left: 4px;
+  animation: ellipsis-pulse 1s infinite;
+}
+
+@keyframes ellipsis-pulse {
+  0%, 100% { opacity: 0.3; }
+  50%      { opacity: 1; }
+}
+
+/* ─── Dark Mode ─── */
+
+[data-theme="dark"] .button {
+  --btn-bg: #1e2533;
+  --btn-border: #2d3748;
+  --btn-text: #e2e8f0;
+}
+
+[data-theme="dark"] .button:hover:not(.button--disabled) {
+  --btn-bg: #2d3748;
+  --btn-border: #4a5568;
+}
+
+[data-theme="dark"] .button--cancel {
+  --btn-bg: transparent;
+  --btn-border: transparent;
+  --btn-text: #9ca3af;
+}
+
+[data-theme="dark"] .button--cancel:hover {
+  --btn-bg: #1e2533;
+  --btn-border: #2d3748;
+}
+
+/* ─── Accesibilidad: prefers-reduced-motion ─── */
+
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .button--shaking,
+  .button--success {
+    animation: none;
+    transition: none;
+  }
+}
