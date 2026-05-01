@@ -21,14 +21,11 @@ El formato sigue [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 - Reorganización de archivos: estándares movidos a `standards/<dominio>/`
 - `UX_UI_MANIFESTO.md`: fusión con estándar de Transparencia Radical — documento expandido de 7 a 9 secciones con filosofía de complacencia, métricas concretas de feedback (800ms, 300ms, % real), animaciones éxito/error sin colores, diseño Liquid Glass completo, jerarquía visual, iconos en línea, micro-interacciones detalladas (catálogo), `prefers-reduced-motion`, haptic feedback móvil, y gobernanza del diseño
-- `AI_RULES.md` §8: actualizada referencia al manifiesto expandido
-- `AI_RULES.md` §1: actualizada referencia a los nuevos estándares de arquitectura y seguridad
-
-### Changed
 - `UX_UI_MANIFESTO.md` §3: agregada escala monocromática base (CSS Custom Properties `--gray-50` a `--gray-950`) con inversión automática light/dark. Prohibido usar hex crudos en componentes.
 - `UX_UI_MANIFESTO.md` §8: reescrito con principio de animación sobre color — botón unificado sin colores semánticos (primario/destructivo), jerarquía por posición/tamaño/peso, todos los estados comunicados con animaciones, accesible para daltonismo
+- `AI_RULES.md` §1, §3, §8: actualizadas referencias a los nuevos estándares de arquitectura, seguridad e Infisical. Agregado workspace `casabero-infra`, protocolo de rotación de secrets ante exposición, prohibición de mostrar valores crudos en respuestas
 - `examples/frontend/Button.css`, `Card.css`: migrados a tokens de la escala monocromática (`--gray-*`, `--accent-*`)
-- `examples/frontend/Button.tsx`: nuevo componente unificado con shake + confirmación para acciones destructivas, pulso para éxito, sin variantes de color
+- `examples/ai/AGENTS_TEMPLATE.md`: stack tecnológico completo (Supabase, Neon, Cloudflare, Coolify, Telegram, DeepSeek, Minimax, Nvidia, Notion) y guía de integración con Infisical (CLI + acceso programático)
 
 ### Added
 - `standards/backend/ARCHITECTURE.md`: arquitectura por capas (models → repositories → services → controllers), contratos con interfaces, regla de dependencia unidireccional, inyección de dependencias sin librerías, checklist de calidad arquitectónica

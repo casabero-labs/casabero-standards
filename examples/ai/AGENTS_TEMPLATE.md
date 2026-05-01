@@ -26,9 +26,13 @@
 
 - Frontend: React + TypeScript + Vanilla CSS
 - Backend: [Node.js/Python/Go]
-- DB: Supabase (PostgreSQL)
+- DB: Supabase (PostgreSQL) / Neon (PostgreSQL serverless)
 - Deploy: Coolify (192.168.1.7)
-- Secrets: Infisical (secrets.casabero.com)
+- DNS/Proxy: Cloudflare
+- Secrets: Infisical (secrets.casabero.com, workspace: casabero-infra)
+- Notificaciones: Telegram Bot
+- IA: DeepSeek / Minimax / Nvidia
+- Documentación: Notion
 
 ## Estándares Obligatorios
 
@@ -93,3 +97,40 @@ src/
 - `docs/deployments/` — Historial de despliegues
 - `docs/AI_LOG.md` — Bitácora del agente
 - `DEPLOYMENT.md` — Manual de despliegue
+
+## Infisical (Secrets)
+
+El agente debe cargar secrets desde Infisical al iniciar, nunca pedir tokens al usuario.
+
+**Configuración en el proyecto:**
+
+```bash
+# Instalar CLI de Infisical
+npm install -g @infisical/cli
+
+# Login (una sola vez por máquina)
+infisical login --domain https://secrets.casabero.com
+
+# Cargar secrets como variables de entorno antes de ejecutar
+infisical run --env prod -- npm run dev
+```
+
+**Acceso programático (cuando no hay CLI):**
+
+```typescript
+const INFISICAL_URL = "https://secrets.casabero.com";
+const INFISICAL_TOKEN = process.env.INFISICAL_SERVICE_TOKEN; // NUNCA hardcodeado
+
+async function getSecret(key: string): Promise<string> {
+  const res = await fetch(
+    `${INFISICAL_URL}/api/v3/secrets/raw?workspaceId=${WORKSPACE_ID}&environment=prod&secretPath=%2F`,
+    { headers: { Authorization: `Bearer ${INFISICAL_TOKEN}` } }
+  );
+  const data = await res.json();
+  const secret = data.secrets.find((s: any) => s.secretKey === key);
+  return secret?.secretValue ?? "";
+}
+```
+
+**Regla crítica:** Nunca exponer valores de secrets en logs, respuestas, o commits. Si un token se filtra, rotar TODOS los secrets del workspace.
+

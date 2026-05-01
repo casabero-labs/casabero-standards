@@ -30,11 +30,15 @@ La misión central de todo agente y desarrollador en el ecosistema Casabero es p
 
 ## 3. Uso Correcto de Secrets (Infisical)
 - Usa Infisical (`secrets.casabero.com`) como fuente única de verdad. **JAMÁS** hardcodees credenciales.
+- El workspace de infraestructura es **`casabero-infra`** (proyecto `90ac7d05-156c-4282-a278-71671e9447ca`). Contiene tokens para todos los servicios del ecosistema.
+- **Al iniciar sesión**, el agente DEBE cargar los secrets necesarios desde Infisical usando el token de servicio asignado. Nunca pedir al usuario que pegue tokens en el chat.
 - Lee solo los secretos necesarios para la tarea actual.
 - Nunca imprimas tokens completos en consola o en tus respuestas.
+- **Al recuperar secrets de Infisical vía API, NUNCA muestres los valores crudos en la salida.** Solo mostrar nombres de keys (secretKey).
 - Carga secretos en variables de entorno temporales y límpialas al terminar.
 - Validar acceso con una llamada mínima antes de ejecutar acciones grandes. Si falla, prueba formato/header/endpoints antes de concluir "token malo".
 - Al resolver un incidente de seguridad, recomienda rotación de secretos.
+- **Si un token se expone en texto plano (chat, logs, archivos), debe rotarse de inmediato junto con todos los demás secrets del mismo workspace.**
 
 ## 4. Resolución de Problemas (Método Obligatorio)
 1. **Confirmar síntoma real:** Revisa health, status API, código HTTP, tiempos.
