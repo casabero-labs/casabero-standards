@@ -1,0 +1,11 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "instructions": [
+    "standards/ai/AI_RULES.md",
+    "standards/backend/ARCHITECTURE.md",
+    "standards/frontend/UX_UI_MANIFESTO.md",
+    "standards/devops/COOLIFY_DEPLOY_STANDARD.md",
+    "standards/security/SECURITY.md",
+    "CONTRIBUTING.md"
+  ]
+}

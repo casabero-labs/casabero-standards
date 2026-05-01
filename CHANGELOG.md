@@ -34,6 +34,9 @@ El formato sigue [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - `standards/backend/ARCHITECTURE.md`: arquitectura por capas (models → repositories → services → controllers), contratos con interfaces, regla de dependencia unidireccional, inyección de dependencias sin librerías, checklist de calidad arquitectónica
 - `standards/security/SECURITY.md`: checklist de seguridad obligatorio (auth/RBAC, RLS, validación inputs, sanitización outputs, HTTP headers, CORS, dependencias, logging, pre-deploy)
 - `examples/backend/`: app completa de ejemplo con la arquitectura por capas (models, repository + interfaz, service + interfaz, controller, composición raíz)
+- `AGENTS.md`: reglas para OpenCode al trabajar en este repositorio
+- `opencode.json`: carga automática de todos los estándares como contexto base
+- `examples/ai/AGENTS_TEMPLATE.md`: template de AGENTS.md para copiar en cualquier proyecto Casabero, incluye opencode.json con URLs a los estándares
 
 ## [0.3.0] - 2026-05-01
 
