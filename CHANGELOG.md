@@ -25,8 +25,10 @@ El formato sigue [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - `AI_RULES.md` §1: actualizada referencia a los nuevos estándares de arquitectura y seguridad
 
 ### Changed
+- `UX_UI_MANIFESTO.md` §3: agregada escala monocromática base (CSS Custom Properties `--gray-50` a `--gray-950`) con inversión automática light/dark. Prohibido usar hex crudos en componentes.
 - `UX_UI_MANIFESTO.md` §8: reescrito con principio de animación sobre color — botón unificado sin colores semánticos (primario/destructivo), jerarquía por posición/tamaño/peso, todos los estados comunicados con animaciones, accesible para daltonismo
-- `examples/frontend/Button.tsx/css`: nuevo componente unificado con shake + confirmación para acciones destructivas, pulso para éxito, sin variantes de color
+- `examples/frontend/Button.css`, `Card.css`: migrados a tokens de la escala monocromática (`--gray-*`, `--accent-*`)
+- `examples/frontend/Button.tsx`: nuevo componente unificado con shake + confirmación para acciones destructivas, pulso para éxito, sin variantes de color
 
 ### Added
 - `standards/backend/ARCHITECTURE.md`: arquitectura por capas (models → repositories → services → controllers), contratos con interfaces, regla de dependencia unidireccional, inyección de dependencias sin librerías, checklist de calidad arquitectónica

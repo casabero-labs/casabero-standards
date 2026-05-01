@@ -56,6 +56,67 @@ El usuario nunca debe preguntarse si un click funcionó. Usa esqueletos de carga
 - El agente debe sugerir la paleta basándose en la naturaleza del proyecto.
 - Por defecto, la UI es monocromática (fondos blancos/grises oscuros, bordes tenues) y el color se usa solo para acentos semánticos.
 
+### Escala Monocromática Base (CSS Custom Properties)
+
+Toda app debe definir una escala de grises estructural que provea jerarquía visual sin depender del color. Esta escala es la base sobre la cual operan las animaciones de estado.
+
+```css
+:root {
+  /* ─── Escala Monocromática (Light) ─── */
+  --gray-50:  #f8fafc;   /* Fondo de página */
+  --gray-100: #f1f5f9;   /* Fondo de superficie elevada */
+  --gray-200: #e2e8f0;   /* Borde sutil / hover de botón */
+  --gray-300: #cbd5e1;   /* Borde visible / skeleton */
+  --gray-400: #94a3b8;   /* Texto placeholder / icono inactivo */
+  --gray-500: #64748b;   /* Texto secundario / icono */
+  --gray-600: #475569;   /* Texto de cuerpo */
+  --gray-700: #334155;   /* Texto enfatizado */
+  --gray-800: #1e293b;   /* Títulos */
+  --gray-900: #0f172a;   /* Texto primario */
+  --gray-950: #020617;   /* Máximo contraste */
+
+  /* ─── Acentos (máx 3, brand + semántica) ─── */
+  --accent-1: #3b82f6;   /* Acción / enlace / focus */
+  --accent-2: #8b5cf6;   /* Secundario */
+  --accent-3: #06b6d4;   /* Terciario / datos */
+}
+
+[data-theme="dark"] {
+  /* ─── Escala Monocromática (Dark) ─── */
+  --gray-50:  #0f172a;   /* Fondo de página */
+  --gray-100: #1e293b;   /* Fondo de superficie elevada */
+  --gray-200: #334155;   /* Borde sutil */
+  --gray-300: #475569;   /* Borde visible / skeleton */
+  --gray-400: #64748b;   /* Texto placeholder / icono inactivo */
+  --gray-500: #94a3b8;   /* Texto secundario / icono */
+  --gray-600: #cbd5e1;   /* Texto de cuerpo */
+  --gray-700: #e2e8f0;   /* Texto enfatizado */
+  --gray-800: #f1f5f9;   /* Títulos */
+  --gray-900: #f8fafc;   /* Texto primario */
+  --gray-950: #ffffff;   /* Máximo contraste */
+}
+```
+
+**Reglas de uso de la escala:**
+
+| Propósito | Token |
+|---|---|
+| Fondo de página / app shell | `--gray-50` |
+| Fondo de cards, modales, superficies | `--gray-100` |
+| Bordes de componentes (card, input, botón) | `--gray-200` (reposo), `--gray-300` (hover) |
+| Skeleton loaders | `--gray-300` |
+| Placeholders / texto inactivo | `--gray-400` |
+| Texto secundario / íconos | `--gray-500` |
+| Texto de cuerpo / párrafos | `--gray-600` |
+| Texto enfatizado / labels | `--gray-700` |
+| Títulos / headings | `--gray-800` |
+| Texto primario (máximo contraste) | `--gray-900` |
+| Acento de acción / focus / enlaces | `--accent-1` |
+| Acento secundario | `--accent-2` |
+| Acento terciario / visualización de datos | `--accent-3` |
+
+**Prohibido:** usar valores hexadecimales crudos (`#e5e5e5`, `#64748b`) en componentes. Todo debe referenciar un token de la escala. Si un valor no existe en la escala, se evalúa si realmente es necesario o si un token existente cubre el caso.
+
 ---
 
 ## 4. Diseño Visual y Jerarquía (Liquid Glass)

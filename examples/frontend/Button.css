@@ -1,5 +1,6 @@
-/* ─── Botón Unificado (UX_UI_MANIFESTO.md §8) ─── */
-/* Un solo estilo de botón. Jerarquía por animación, no por color. */
+/* ─── Botón Unificado (UX_UI_MANIFESTO.md §8 + §3 Escala Monocromática) ─── */
+/* Un solo estilo de botón. Todos los colores vienen de la escala monocromática. */
+/* Jerarquía por animación, no por color. */
 /* Accesible: testado con filtros de daltonismo. */
 
 .button-wrapper {
@@ -8,12 +9,9 @@
   align-items: center;
 }
 
-/* ─── Base (estilo unificado, colores estructurales) ─── */
+/* ─── Base (escala monocromática) ─── */
 
 .button {
-  --btn-bg: #eef2f7;
-  --btn-border: #d5dee8;
-  --btn-text: #1a202c;
   --btn-radius: 8px;
   --btn-transition: 0.2s ease-out;
 
@@ -21,9 +19,9 @@
   font-size: 0.9375rem;
   font-weight: 500;
   line-height: 1.4;
-  background: var(--btn-bg);
-  color: var(--btn-text);
-  border: 1px solid var(--btn-border);
+  background: var(--gray-100);    /* §3: fondo de superficie */
+  color: var(--gray-700);          /* §3: texto enfatizado */
+  border: 1px solid var(--gray-200); /* §3: borde de componente */
   border-radius: var(--btn-radius);
   cursor: pointer;
   outline: none;
@@ -54,8 +52,8 @@
 /* ─── Hover ─── */
 
 .button:hover:not(.button--disabled) {
-  --btn-bg: #e2e8f0;
-  --btn-border: #cbd5e1;
+  background: var(--gray-200);
+  border-color: var(--gray-300);
 }
 
 /* ─── Pressed ─── */
@@ -64,10 +62,10 @@
   transform: scale(0.95);
 }
 
-/* ─── Focus (teclado) — único uso de color, por accesibilidad ─── */
+/* ─── Focus (teclado) — único uso de color de acento ─── */
 
 .button:focus-visible {
-  outline: 2px solid var(--btn-focus, #93c5fd);
+  outline: 2px solid var(--accent-1);
   outline-offset: 2px;
 }
 
@@ -106,20 +104,20 @@
 }
 
 .button--disabled:hover {
-  --btn-bg: #eef2f7;
-  --btn-border: #d5dee8;
+  background: var(--gray-100);
+  border-color: var(--gray-200);
 }
 
 /* Botón de cancelar (confirmación destructiva) */
 .button--cancel {
-  --btn-bg: transparent;
-  --btn-border: transparent;
-  --btn-text: #6b7280;
+  background: transparent;
+  border-color: transparent;
+  color: var(--gray-500);
 }
 
 .button--cancel:hover {
-  --btn-bg: #f3f4f6;
-  --btn-border: #e5e5e5;
+  background: var(--gray-100);
+  border-color: var(--gray-200);
 }
 
 /* ─── Elipsis de carga ─── */
@@ -140,31 +138,7 @@
   50%      { opacity: 1; }
 }
 
-/* ─── Dark Mode ─── */
-
-[data-theme="dark"] .button {
-  --btn-bg: #1e2533;
-  --btn-border: #2d3748;
-  --btn-text: #e2e8f0;
-}
-
-[data-theme="dark"] .button:hover:not(.button--disabled) {
-  --btn-bg: #2d3748;
-  --btn-border: #4a5568;
-}
-
-[data-theme="dark"] .button--cancel {
-  --btn-bg: transparent;
-  --btn-border: transparent;
-  --btn-text: #9ca3af;
-}
-
-[data-theme="dark"] .button--cancel:hover {
-  --btn-bg: #1e2533;
-  --btn-border: #2d3748;
-}
-
-/* ─── Accesibilidad: prefers-reduced-motion ─── */
+/* ─── Accesibilidad ─── */
 
 @media (prefers-reduced-motion: reduce) {
   .button,

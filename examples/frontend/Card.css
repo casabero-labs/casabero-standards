@@ -1,24 +1,21 @@
-/* ─── Tarjeta Premium (UX_UI_MANIFESTO.md §7.3) ─── */
+/* ─── Tarjeta Premium (UX_UI_MANIFESTO.md §9.3 + §3 Escala Monocromática) ─── */
 /* Borde ultra sutil, fondo blanco puro, sombra en reposo que se eleva al hover */
+/* Todos los colores referencian la escala monocromática definida en §3. */
 
 .card {
   --card-radius: 12px;
-  --card-border: #e5e5e5;
-  --card-bg: #ffffff;
-  --card-shadow-rest: 0 1px 3px rgba(0, 0, 0, 0.04);
-  --card-shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.08);
   --card-transition: 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
+  background: var(--gray-100);
+  border: 1px solid var(--gray-200);
   border-radius: var(--card-radius);
-  box-shadow: var(--card-shadow-rest);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
   padding: 24px;
   transition: box-shadow var(--card-transition), transform var(--card-transition);
 }
 
 .card:hover {
-  box-shadow: var(--card-shadow-hover);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   transform: translateY(-2px);
 }
 
@@ -26,7 +23,7 @@
   background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(229, 229, 229, 0.5);
+  border: 1px solid rgba(203, 213, 225, 0.5); /* --gray-300 con opacidad */
 }
 
 .card__header {
@@ -37,40 +34,37 @@
   font-family: "Outfit", sans-serif;
   font-size: 1.25rem;
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--gray-800);
   margin: 0;
 }
 
 .card__subtitle {
   font-family: "Inter", sans-serif;
   font-size: 0.875rem;
-  color: #6b7280;
+  color: var(--gray-500);
   margin: 4px 0 0;
 }
 
 .card__body {
   font-family: "Inter", sans-serif;
   font-size: 0.9375rem;
-  color: #374151;
+  color: var(--gray-600);
   line-height: 1.6;
 }
 
-/* ─── Dark Mode (UX_UI_MANIFESTO.md §4) ─── */
+/* ─── Dark Mode — los tokens se invierten automáticamente vía [data-theme="dark"] en :root ─── */
 [data-theme="dark"] .card {
-  --card-bg: #1e1e24;
-  --card-border: #2d2d35;
-  --card-shadow-rest: 0 1px 3px rgba(0, 0, 0, 0.3);
-  --card-shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
-[data-theme="dark"] .card__title {
-  color: #f0f0f0;
+[data-theme="dark"] .card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
 }
 
-[data-theme="dark"] .card__subtitle {
-  color: #9ca3af;
+[data-theme="dark"] .card--glass {
+  background: rgba(15, 23, 42, 0.7);
+  border-color: rgba(71, 85, 105, 0.5);
 }
 
-[data-theme="dark"] .card__body {
-  color: #d1d5db;
-}
+/* Los colores de texto no necesitan reglas dark explícitas:
+   --gray-800 → #f1f5f9 en dark mode automáticamente desde :root */
