@@ -1,0 +1,50 @@
+# Changelog
+
+Todos los cambios notables a los estándares Casabero se documentan aquí.
+
+El formato sigue [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
+
+## [Unreleased]
+
+### Added
+- Estructura de carpetas por dominio (ai, frontend, devops)
+- README.md con propósito general del repositorio
+- CONTRIBUTING.md con guía para desarrolladores
+- CHANGELOG.md para tracking de versiones
+- Ejemplos prácticos en `examples/` (frontend, devops, ai)
+- Diagramas de arquitectura y flujo de despliegue en `diagrams/`
+- Script de validación `scripts/validate.sh`
+- GitHub Actions workflow para CI/CD de validación (`.github/workflows/validate.yml`)
+- `examples/frontend/ProgressBar.tsx/css`: barra de progreso con animaciones éxito/error sin color
+- `examples/frontend/GlassCard.tsx/css`: tarjeta con efecto Liquid Glass (glassmorphism, profundidad, reflejos)
+
+### Changed
+- Reorganización de archivos: estándares movidos a `standards/<dominio>/`
+- `UX_UI_MANIFESTO.md`: fusión con estándar de Transparencia Radical — documento expandido de 7 a 9 secciones con filosofía de complacencia, métricas concretas de feedback (800ms, 300ms, % real), animaciones éxito/error sin colores, diseño Liquid Glass completo, jerarquía visual, iconos en línea, micro-interacciones detalladas (catálogo), `prefers-reduced-motion`, haptic feedback móvil, y gobernanza del diseño
+- `AI_RULES.md` §8: actualizada referencia al manifiesto expandido
+
+## [0.3.0] - 2026-05-01
+
+### Added
+- Regla crítica de Deploy en Coolify: distinción entre restart y deploy, polling de deployment_uuid, verificación de evidencia final.
+- Protocolo de migraciones de repositorio (casabero → casabero-labs): una app por vez, ventana controlada, rollback definido, evidencia antes de continuar.
+
+### Changed
+- `AI_RULES.md §6`: agregada sección "Regla crítica de Deploy en Coolify" y "Migraciones de repositorio".
+- `COOLIFY_DEPLOY_STANDARD.md`: expandido con anti-patrones prohibidos y seguridad de autenticación Git.
+
+## [0.2.0] - 2026-04-30
+
+### Added
+- Sección 1 en `AI_RULES.md`: "Misión de Código" como pilar fundacional con 4 atributos no negociables (Funcional, Seguro, Escalable, Fácil de Entender).
+- Sección 9 en `AI_RULES.md`: "Data-Driven Development" con recolección obligatoria de telemetría y analítica.
+
+### Fixed
+- Corrección de numeración en ambos documentos (`AI_RULES.md` y `UX_UI_MANIFESTO.md`).
+
+## [0.1.0] - 2026-04-29
+
+### Added
+- `AI_RULES.md`: reglas base de comportamiento para agentes IA (secciones 1-8, 10).
+- `COOLIFY_DEPLOY_STANDARD.md`: estándar operacional de despliegue en Coolify.
+- `UX_UI_MANIFESTO.md`: sistema de diseño y arquitectura frontend.

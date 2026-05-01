@@ -1,0 +1,101 @@
+/* ─── Liquid Glass Card (UX_UI_MANIFESTO.md §4) ─── */
+
+.glass-card {
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+  --glass-radius: 16px;
+  --glass-blur: 16px;
+
+  position: relative;
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--glass-radius);
+  box-shadow: var(--glass-shadow);
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ─── Capas de profundidad ─── */
+
+.glass-card--depth-1 {
+  --glass-bg: rgba(255, 255, 255, 0.45);
+  --glass-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.glass-card--depth-2 {
+  --glass-bg: rgba(255, 255, 255, 0.55);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.06);
+}
+
+.glass-card--depth-3 {
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-shadow: 0 12px 48px rgba(0, 0, 0, 0.08);
+}
+
+/* ─── Reflejo dinámico (simula fuente de luz) ─── */
+
+.glass-card__reflection {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.25) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  border-radius: var(--glass-radius) var(--glass-radius) 0 0;
+  pointer-events: none;
+}
+
+/* ─── Contenido siempre en primer plano ─── */
+
+.glass-card__content {
+  position: relative;
+  z-index: 1;
+  padding: 24px;
+}
+
+/* ─── Interactividad ─── */
+
+.glass-card--interactive {
+  cursor: pointer;
+}
+
+.glass-card--interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+}
+
+.glass-card--interactive:active {
+  transform: scale(0.98);
+}
+
+/* ─── Dark Mode ─── */
+
+[data-theme="dark"] .glass-card {
+  --glass-bg: rgba(30, 30, 36, 0.55);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .glass-card__reflection {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.06) 0%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+/* ─── Accesibilidad ─── */
+
+@media (prefers-reduced-motion: reduce) {
+  .glass-card {
+    transition: none;
+  }
+}

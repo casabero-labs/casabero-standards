@@ -1,0 +1,8 @@
+{
+  "ignorePatterns": [
+    { "pattern": "^http://192.168" },
+    { "pattern": "^http://localhost" }
+  ],
+  "retryOn429": true,
+  "aliveStatusCodes": [200, 403]
+}

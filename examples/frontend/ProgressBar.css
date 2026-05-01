@@ -1,0 +1,98 @@
+/* ─── Barra de Progreso (UX_UI_MANIFESTO.md §1) ─── */
+
+@media (prefers-reduced-motion: reduce) {
+  .progress__bar,
+  .progress__message {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+.progress {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.progress__track {
+  width: 100%;
+  height: 6px;
+  background: #f3f4f6;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress__bar {
+  height: 100%;
+  border-radius: 3px;
+  background: #d1d5db;
+  transition: width 0.3s ease-out;
+}
+
+/* ─── Estados (sin color — solo animación) ─── */
+
+.progress__bar--success {
+  background: #d1d5db;
+  animation: progress-pulse 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.progress__bar--error {
+  background: #d1d5db;
+  animation: progress-shake 0.4s ease;
+}
+
+.progress__bar--running {
+  background: #d1d5db;
+}
+
+/* ─── Animaciones ─── */
+
+@keyframes progress-pulse {
+  0%   { transform: scaleY(1);   opacity: 1; }
+  50%  { transform: scaleY(1.8); opacity: 0.7; }
+  100% { transform: scaleY(1);   opacity: 1; }
+}
+
+@keyframes progress-shake {
+  0%, 100% { transform: translateX(0); }
+  20%      { transform: translateX(-4px); }
+  40%      { transform: translateX(4px); }
+  60%      { transform: translateX(-3px); }
+  80%      { transform: translateX(3px); }
+}
+
+/* ─── Mensaje humano ─── */
+
+.progress__message {
+  font-family: "Inter", sans-serif;
+  font-size: 0.8125rem;
+  color: #6b7280;
+  margin: 8px 0 0;
+  transition: color 0.3s ease;
+}
+
+.progress__message--success {
+  color: #374151;
+}
+
+.progress__message--error {
+  color: #374151;
+  animation: progress-shake 0.4s ease;
+}
+
+/* ─── Dark Mode ─── */
+[data-theme="dark"] .progress__track {
+  background: #2d2d35;
+}
+
+[data-theme="dark"] .progress__bar {
+  background: #4b5563;
+}
+
+[data-theme="dark"] .progress__message {
+  color: #9ca3af;
+}
+
+[data-theme="dark"] .progress__message--success,
+[data-theme="dark"] .progress__message--error {
+  color: #d1d5db;
+}

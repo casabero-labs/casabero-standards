@@ -95,8 +95,8 @@ docs/
 ```
 
 ## 8. Diseño y Estética (UX/UI Manifesto)
-- **Consulta Obligatoria:** Lee y aplica siempre el `UX_UI_MANIFESTO.md` en este repositorio. 
-- Se exige un diseño de **transparencia pura** (barras de carga sutiles), colores pasteles en armonía (máx 3), inputs hiper-legibles, *Dark Mode* vía toggle, animaciones tipo *liquid glass* de Apple, responsividad intencional, y la creación de un **Menú de Ayuda** intuitivo desde el día 1.
+- **Consulta Obligatoria:** Lee y aplica siempre el `UX_UI_MANIFESTO.md` en este repositorio.
+- El manifiesto cubre: **Transparencia Radical** (feedback visible, barras de progreso con % real, animaciones éxito/error sin colores), **Diseño Liquid Glass** (glassmorphism, jerarquía visual, iconos en línea), paleta de 3 colores pastel, inputs hiper-legibles, *Dark Mode* vía toggle con haptic feedback en móvil, **Micro-interacciones** (200-400ms, 60fps, `prefers-reduced-motion`), **Menú de Ayuda** intuitivo desde el día 1, y **Gobernanza** (revisión obligatoria de transparencia por flujo nuevo, excepciones documentadas).
 
 ## 9. Data-Driven Development (Recolección Obligatoria)
 - **Telemetría y Analítica:** Es **obligatorio** que el desarrollo contemple mecanismos para la recolección exhaustiva de datos. El sistema debe rastrear:
