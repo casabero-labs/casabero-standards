@@ -122,7 +122,37 @@ Todas las animaciones deben cumplir estos criterios:
 
 ---
 
-## 8. Arquitectura Frontend Inquebrantable
+## 8. Botones y Elementos Interactivos
+
+### Light Mode
+- **Fondo del botón:** `#EEF2F7`
+- **Borde del botón:** `#D5DEE8`
+- **Texto del botón:** `#1A202C`
+
+### Dark Mode
+- **Fondo del botón:** `#1E2533`
+- **Borde del botón:** `#2D3748`
+- **Texto del botón:** `#E2E8F0`
+
+### Comportamiento
+- **Hover Light:** Fondo `#E2E8F0`, borde `#CBD5E1`
+- **Hover Dark:** Fondo `#2D3748`, borde `#4A5568`
+- **Active/Pressed:** Opacidad 0.85
+- **Disabled:** Opacidad 0.5, sin hover effect
+- **Border radius:** `8px` por defecto
+- **Padding vertical:** `10px 16px` (estándar), `14px 24px` (botones grandes)
+
+### Botones Primarios (Brand / Acción Principal)
+- **Light:** Fondo `#1A202C`, texto `#FFFFFF`, borde `#1A202C`
+- **Dark:** Fondo `#E2E8F0`, texto `#1A202C`, borde `#E2E8F0`
+
+### Botones de Peligro (Destructive / Eliminar)
+- **Light:** Fondo `#FEF2F2`, borde `#FECACA`, texto `#991B1B`
+- **Dark:** Fondo `#2D1B1B`, borde `#4A2222`, texto `#FCA5A5`
+
+---
+
+## 9. Arquitectura Frontend Inquebrantable
 
 1. **Cero Tailwind CSS (Por Defecto):** Usamos **Vanilla CSS** con CSS Custom Properties (Variables).
 2. **Arquitectura "Dumb":** Componentes React "tontos" acoplados a su archivo CSS homónimo (ej: `Card.tsx` + `card.css`).
@@ -131,7 +161,7 @@ Todas las animaciones deben cumplir estos criterios:
 
 ---
 
-## 9. Gobernanza del Diseño
+## 10. Gobernanza del Diseño
 
 - **Revisión Obligatoria:** Todo nuevo flujo o funcionalidad debe pasar por una revisión de Transparencia Radical + Experiencia Visual antes de ser aprobado.
 - **Feedback Directo:** La retroalimentación debe ser siempre sincera, directa y sin filtros. No se aceptan comentarios complacientes (ver `AI_RULES.md` §2).
