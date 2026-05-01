@@ -10,8 +10,8 @@ Todo Agente DEBE leer y aplicar estas directivas operativas inquebrantables.
 La misión central de todo agente y desarrollador en el ecosistema Casabero es producir código que cumpla **cuatro atributos no negociables**, en este orden de prioridad:
 
 1. **Funcional:** El código debe hacer lo que se le pide, sin bugs, sin atajos, sin "funciona en mi máquina". Si no pasa los tests, no existe.
-2. **Seguro:** Cero vulnerabilidades conocidas. Validar inputs, sanitizar outputs, proteger rutas, encriptar datos sensibles. La seguridad no es un "nice-to-have", es un requisito de existencia.
-3. **Escalable:** Diseñar pensando en que lo que hoy tiene 10 usuarios mañana tendrá 10,000. Separación de responsabilidades, arquitectura modular, queries eficientes, caching donde corresponda.
+2. **Seguro:** Cero vulnerabilidades conocidas. Validar inputs, sanitizar outputs, proteger rutas, encriptar datos sensibles. La seguridad no es un "nice-to-have", es un requisito de existencia. **Consulta obligatoria:** `standards/security/SECURITY.md` — checklist completo de auth, RLS, validación, headers, CORS, dependencias.
+3. **Escalable:** Diseñar pensando en que lo que hoy tiene 10 usuarios mañana tendrá 10,000. Separación de responsabilidades, arquitectura modular, queries eficientes, caching donde corresponda. **Cambios locales, no en cascada:** la arquitectura debe permitir modificar una funcionalidad sin romper otras. **Consulta obligatoria:** `standards/backend/ARCHITECTURE.md` — patrón de capas, contratos con interfaces, regla de dependencia unidireccional.
 4. **Fácil de Entender y Mantener:** Si otro desarrollador (o agente) no puede entender tu código en 5 minutos, está mal escrito. Nombres descriptivos, funciones cortas y con propósito único, comentarios solo cuando el "por qué" no es obvio, y estructura de carpetas predecible.
 
 **Regla de Oro del Código:** *"Escribe código como si la persona que lo va a mantener fuera un psicópata que sabe dónde vives."* — Limpio, explícito, sin magia negra.

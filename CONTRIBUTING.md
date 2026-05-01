@@ -9,8 +9,10 @@ Cómo usar, aplicar y contribuir a los estándares Casabero.
 Todo agente IA que opere en un proyecto Casabero debe cargar como contexto inicial:
 
 ```
-standards/ai/AI_RULES.md          # Comportamiento base obligatorio
-standards/frontend/UX_UI_MANIFESTO.md  # Si el proyecto tiene frontend
+standards/ai/AI_RULES.md                    # Comportamiento base obligatorio
+standards/backend/ARCHITECTURE.md            # Si el proyecto tiene backend
+standards/security/SECURITY.md               # Obligatorio para todo proyecto
+standards/frontend/UX_UI_MANIFESTO.md        # Si el proyecto tiene frontend
 standards/devops/COOLIFY_DEPLOY_STANDARD.md  # Si el proyecto se despliega en Coolify
 ```
 
