@@ -20,7 +20,7 @@ El formato sigue [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Changed
 - Reorganización de archivos: estándares movidos a `standards/<dominio>/`
-- `UX_UI_MANIFESTO.md`: fusión con estándar de Transparencia Radical — documento expandido de 7 a 9 secciones con filosofía de complacencia, métricas concretas de feedback (800ms, 300ms, % real), animaciones éxito/error sin colores, diseño Liquid Glass completo, jerarquía visual, iconos en línea, micro-interacciones detalladas (catálogo), `prefers-reduced-motion`, haptic feedback móvil, y gobernanza del diseño
+- `UX_UI_MANIFESTO.md`: fusión con estándar de Transparencia Radical — documento expandido de 7 a 10 secciones con filosofía de complacencia, métricas concretas de feedback (800ms, 300ms, % real), animaciones éxito/error sin colores, diseño Liquid Glass completo, jerarquía visual, iconos en línea, micro-interacciones detalladas (catálogo), `prefers-reduced-motion`, haptic feedback móvil, gobernanza del diseño, y catálogo de componentes obligatorio pre-desarrollo
 - `UX_UI_MANIFESTO.md` §3: agregada escala monocromática base (CSS Custom Properties `--gray-50` a `--gray-950`) con inversión automática light/dark. Prohibido usar hex crudos en componentes.
 - `UX_UI_MANIFESTO.md` §8: reescrito con principio de animación sobre color — botón unificado sin colores semánticos (primario/destructivo), jerarquía por posición/tamaño/peso, todos los estados comunicados con animaciones, accesible para daltonismo
 - `AI_RULES.md` §1, §3, §8: actualizadas referencias a los nuevos estándares de arquitectura, seguridad e Infisical. Agregado workspace `casabero-infra`, protocolo de rotación de secrets ante exposición, prohibición de mostrar valores crudos en respuestas

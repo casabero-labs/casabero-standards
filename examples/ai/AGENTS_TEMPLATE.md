@@ -92,6 +92,7 @@ src/
 ## Documentación
 
 - `docs/architecture/` — Decisiones de diseño
+- `docs/design/CATALOG.md` — Catálogo de componentes (obligatorio antes de frontend)
 - `docs/phases/` — Bitácora de avances
 - `docs/qa_reports/` — Resultados de tests
 - `docs/deployments/` — Historial de despliegues

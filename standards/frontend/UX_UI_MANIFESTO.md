@@ -239,6 +239,38 @@ La importancia de un botón se comunica exclusivamente por:
 
 ## 10. Gobernanza del Diseño
 
+### Catálogo de Componentes (Pre-Desarrollo Obligatorio)
+
+**Antes de escribir una sola línea de código frontend**, se debe diseñar y aprobar un **catálogo completo de todos los elementos visuales** que aparecerán en la aplicación. Esto unifica el diseño y elimina incoherencias entre pantallas.
+
+El catálogo debe documentar cada elemento con:
+
+1. **Nombre del componente** (ej. `Button`, `Card`, `Modal`, `Navbar`)
+2. **Todos sus estados** (reposo, hover, pressed, disabled, loading, success, error, empty)
+3. **Todas sus variantes** (tamaños: standard/large, tipos: default/destructive)
+4. **Comportamiento** (animaciones, transiciones, interacciones esperadas)
+5. **Tokens de la escala monocromática** que usa (ver §3)
+6. **Modo claro y oscuro** — ambos deben verse y funcionar correctamente
+
+**Categorías mínimas del catálogo:**
+
+| Categoría | Elementos obligatorios |
+|---|---|
+| **Navegación** | Navbar, Sidebar, Breadcrumbs, Tabs, Menú de ayuda (§6) |
+| **Contenedores** | Card, Modal, Drawer, Panel, GlassCard (§4) |
+| **Formularios** | Input, Textarea, Select, Checkbox, Radio, Toggle, DatePicker (§2) |
+| **Botones** | Button (default + destructive), IconButton, Toggle de Dark Mode (§8, §5) |
+| **Feedback** | ProgressBar (§1), Skeleton, Toast, EmptyState, ErrorState |
+| **Datos** | Table, List, Pagination, Badge, Tag, Tooltip |
+| **Tipografía** | Heading (h1-h4), Body, Caption, Label, montos numéricos (Fira Code) |
+
+**Reglas del catálogo:**
+
+- El catálogo se crea como un archivo `docs/design/CATALOG.md` en el proyecto.
+- Cada componente listado debe tener una implementación de referencia en `src/components/`.
+- **Prohibido:** crear componentes ad-hoc en pantallas que no estén en el catálogo. Si surge un nuevo elemento, primero se agrega al catálogo, se aprueba, y luego se implementa.
+- El catálogo se revisa y aprueba antes de iniciar cualquier desarrollo de frontend.
+
 - **Revisión Obligatoria:** Todo nuevo flujo o funcionalidad debe pasar por una revisión de Transparencia Radical + Experiencia Visual antes de ser aprobado.
 - **Feedback Directo:** La retroalimentación debe ser siempre sincera, directa y sin filtros. No se aceptan comentarios complacientes (ver `AI_RULES.md` §2).
 - **Datos tabulares o complejos:** Se permite scroll o barras de desplazamiento sin forzar el diseño centrado.
