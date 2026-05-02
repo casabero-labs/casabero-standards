@@ -145,6 +145,42 @@ Priorizar la jerarquía mediante:
 - Capas con profundidad (efectos glassmorphism)
 - Contenido siempre en primer plano
 
+### Escala de Espaciado
+
+Usar una escala de espaciado consistente basada en múltiplos de 4px. Nunca usar valores arbitrarios.
+
+| Token | Valor | Uso típico |
+|---|---|---|
+| `--space-1` | `4px` | Padding mínimo entre icono y texto |
+| `--space-2` | `8px` | Gap entre chips/badges, separación de campos en formulario |
+| `--space-3` | `12px` | Padding interno de inputs pequeños |
+| `--space-4` | `16px` | Padding estándar de cards, gap entre secciones internas |
+| `--space-5` | `20px` | Separación entre párrafos |
+| `--space-6` | `24px` | Padding de cards y modales, gutter de grid |
+| `--space-8` | `32px` | Separación entre secciones, margen superior de página |
+| `--space-10` | `40px` | Separación entre secciones grandes |
+| `--space-12` | `48px` | Margen de layout contenedor |
+| `--space-16` | `64px` | Separación de hero sections |
+
+### Sombras y Profundidad
+
+Tres niveles de elevación para crear profundidad sin exagerar. Las sombras deben ser casi imperceptibles en reposo.
+
+| Nivel | Light Mode | Dark Mode | Uso |
+|---|---|---|---|
+| **1 — Sutil** | `0 1px 3px rgba(0,0,0,0.04)` | `0 1px 3px rgba(0,0,0,0.3)` | Cards en reposo, inputs, selects |
+| **2 — Elevado** | `0 4px 16px rgba(0,0,0,0.08)` | `0 4px 16px rgba(0,0,0,0.5)` | Cards en hover, modales, drawers, tooltips |
+| **3 — Flotante** | `0 8px 32px rgba(0,0,0,0.12)` | `0 8px 32px rgba(0,0,0,0.6)` | Dropdowns abiertos, toasts, menús contextuales |
+
+### Breakpoints Responsivos
+
+| Nombre | Ancho mínimo | Dispositivo |
+|---|---|---|
+| `mobile` | `320px` | Teléfono pequeño |
+| `tablet` | `768px` | Tablet vertical / teléfono horizontal |
+| `desktop` | `1024px` | Laptop / tablet horizontal |
+| `wide` | `1440px` | Desktop grande, TV |
+
 ### Iconos
 
 Solo se permiten **iconos minimalistas en línea** (sin relleno ni color). Nada de iconos sólidos, coloridos o recargados.
@@ -158,7 +194,7 @@ En pantallas grandes (PC, TV): el contenido debe estar **centrado** y ajustarse 
 ## 5. Dark Mode y Responsividad Táctil
 
 - **Dark Mode Obligatorio:** Toda app debe tener un modo oscuro cuidado a la perfección, controlable mediante un toggle (típicamente esquina superior derecha o inferior izquierda).
-- **Responsive Intencional:** El click del mouse y el toque del dedo son diferentes. En pantallas móviles, los *touch targets* deben ser amplios (mínimo 44x44px). Si hay que cambiar drásticamente el layout para que el uso táctil sea ergonómico, se hace sin vacilar (ej. cambiar sidebars por bottom-sheets).
+- **Responsive Intencional:** El click del mouse y el toque del dedo son diferentes. En pantallas móviles, los *touch targets* deben ser amplios (mínimo 44x44px). Si hay que cambiar drásticamente el layout para que el uso táctil sea ergonómico, se hace sin vacilar (ej. cambiar sidebars por bottom-sheets). Usar los breakpoints definidos en §4 como referencia (`mobile` 320px, `tablet` 768px, `desktop` 1024px).
 - **Scroll táctil:** El scroll en móvil debe tener inercia natural y ser placentero.
 - **Haptic feedback:** En móvil, combinar animaciones visuales con feedback háptico sutil cuando sea posible (vibración ligera en éxito).
 - Mantener el mismo nivel de transparencia y refinamiento visual que en escritorio.
@@ -205,12 +241,12 @@ Todas las animaciones deben cumplir estos criterios:
 
 | Propiedad | Light Mode | Dark Mode |
 |---|---|---|
-| Fondo | `#EEF2F7` | `#1E2533` |
-| Borde | `#D5DEE8` | `#2D3748` |
-| Texto | `#1A202C` | `#E2E8F0` |
-| Border radius | `8px` | `8px` |
-| Padding estándar | `10px 16px` | `10px 16px` |
-| Padding grande | `14px 24px` | `14px 24px` |
+| Fondo | `var(--gray-100)` | `var(--gray-100)` |
+| Borde | `var(--gray-200)` | `var(--gray-200)` |
+| Texto | `var(--gray-700)` | `var(--gray-700)` |
+| Border radius | `8px` (§4) | `8px` (§4) |
+| Padding estándar | `var(--space-3) var(--space-4)` | `var(--space-3) var(--space-4)` |
+| Padding grande | `var(--space-3) var(--space-6)` | `var(--space-3) var(--space-6)` |
 
 ### Jerarquía Visual sin Color
 
@@ -246,8 +282,22 @@ La importancia de un botón se comunica exclusivamente por:
 
 1. **Cero Tailwind CSS (Por Defecto):** Usamos **Vanilla CSS** con CSS Custom Properties (Variables).
 2. **Arquitectura "Dumb":** Componentes React "tontos" acoplados a su archivo CSS homónimo (ej: `Card.tsx` + `card.css`).
-3. **Tarjetas Premium:** Bordes ultra sutiles (1px `#E5E5E5`), fondo blanco puro, y sombras casi imperceptibles en reposo que se elevan al hover.
+3. **Tarjetas Premium:** Bordes ultra sutiles (var(--gray-200)), fondo var(--gray-100), sombras casi imperceptibles en reposo (nivel 1) que se elevan al hover (nivel 2). Ver §4.
 4. **Tipografías Semánticas:** Armonía absoluta. Outfit (Títulos), Inter (Cuerpo), Fira Code (Montos numéricos, SKUs). El agente puede sugerir otras si el proyecto lo demanda, pero la armonía es ley.
+
+#### Jerarquía Tipográfica Detallada
+
+| Nivel | Familia | Tamaño | Peso | Line height | Uso |
+|---|---|---|---|---|---|
+| **h1** | Outfit | `2rem` (32px) | `700` | `1.2` | Título de página / hero |
+| **h2** | Outfit | `1.5rem` (24px) | `600` | `1.3` | Título de sección |
+| **h3** | Outfit | `1.25rem` (20px) | `600` | `1.3` | Título de card / modal |
+| **h4** | Outfit | `1rem` (16px) | `600` | `1.4` | Subtítulo dentro de card |
+| **body-lg** | Inter | `1.0625rem` (17px) | `400` | `1.6` | Párrafos principales |
+| **body** | Inter | `0.9375rem` (15px) | `400` | `1.6` | Cuerpo estándar |
+| **body-sm** | Inter | `0.8125rem` (13px) | `400` | `1.5` | Texto secundario, metadata |
+| **caption** | Inter | `0.75rem` (12px) | `500` | `1.4` | Labels, badges, timestamps |
+| **mono** | Fira Code | `0.9375rem` (15px) | `400` | `1.5` | Montos, SKUs, códigos, números |
 
 ---
 
