@@ -123,6 +123,20 @@ Toda app debe definir una escala de grises estructural que provea jerarquía vis
 
 Adoptar un enfoque **minimalista, elegante y premium** inspirado en el sistema Liquid Glass de Apple: materiales translúcidos, profundidad sutil, reflejos dinámicos y adaptabilidad entre claro/oscuro.
 
+### Bordes Redondeados
+
+**Todo elemento con esquinas debe tener bordes redondeados.** Cero esquinas en ángulo recto (0px border-radius). El radio varía según el tamaño del elemento:
+
+| Elemento | Border radius |
+|---|---|
+| Botones, inputs, selects | `8px` |
+| Cards, modales, paneles | `12px` |
+| Avatares, toggles circulares | `50%` (círculo perfecto) |
+| Badges, tags, chips | `6px` |
+| Barras de progreso | `4px` |
+
+La redondez contribuye a la sensación premium y amigable del diseño Liquid Glass. Las esquinas filosas se perciben como agresivas e incompletas.
+
 ### Jerarquía Visual
 
 Priorizar la jerarquía mediante:
